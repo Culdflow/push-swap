@@ -14,8 +14,11 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# define INT_MIN -2147483648
-# define SIZE_MAX 65535
+# include <stdarg.h>
+# include <stdio.h>
+# include <limits.h>
+# define INTT_MIN -2147483648
+# define SIZEE_MAX 65535
 
 typedef struct s_list
 {
@@ -66,5 +69,11 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
+int		ft_putstr_fdd(char *s, int fd);
+int		ft_putnbr_fdd(int n, int fd);
+int		ft_putchar_fdd(char c, int fd);
+int		ft_printf(const char *str, ...);
+int		ft_itohex(unsigned int i, int maj);
+int		ft_pitohex(unsigned long long i, int maj);
+int		ft_uputnbr_fd(unsigned int n, int fd);
 #endif

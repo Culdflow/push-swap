@@ -1,8 +1,8 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -Ilib/ft_printf -Ilib/libft -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra -Ilib/libft -fsanitize=address -g
 NAME = pushswap
 
-SRC = main.c
+SRC = srcs/main.c
 
 OBJS = ${SRC:.c=.o}
 
@@ -17,17 +17,15 @@ lib/ft_printf/libft_printf.a:
 lib/libft/lib_ft.a:
 	make -C lib/libft
 
-${NAME}: lib/ft_printf/libft_printf.a lib/libft/lib_ft.a ${OBJS}
-		${CC} ${CFLAGS} ${OBJS} -o ${NAME} -L./lib/ft_printf -lftprintf -L./lib/libft -lft
+${NAME}: lib/libft/lib_ft.a ${OBJS}
+		${CC} ${CFLAGS} ${OBJS} -o ${NAME} -L./lib/libft -lft
 
 fclean: clean
 		rm -rf ${NAME}
-		make fclean -C lib/ft_printf
 		make fclean -C lib/libft
 
 clean:
 		rm -rf ${OBJS}
-		make clean -C lib/ft_printf
 		make clean -C lib/libft
 
 re:	fclean all
