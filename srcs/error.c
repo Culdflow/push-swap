@@ -6,14 +6,16 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:25:15 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/07 05:26:11 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/11 02:46:10 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/push_swap.h"
 
-void	error(char *str)
+void	error(char *str, t_pile *pile)
 {
-	perror(str);
+	free_pile(pile);
+	ft_printf("\e[1;31m[ERROR]\e[0m : ");
+	ft_printf("%s\n",str);
 	exit(1);
 }

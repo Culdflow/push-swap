@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:40:52 by dfeve             #+#    #+#             */
-/*   Updated: 2024/11/11 14:14:41 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/11 02:43:00 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	result;
-	int	sign;
+	int		i;
+	long	result;
+	long	sign;
 
 	i = 0;
 	sign = 1;
@@ -24,13 +25,16 @@ int	ft_atoi(const char *nptr)
 		|| nptr[i] == '\t' || nptr[i] == '\n'
 		|| nptr[i] == '\v')
 		i++;
-	if (nptr[i] == '-')
+	while (nptr[i] == '-' || nptr[i] == '+')
 	{
-		sign = -1;
+		if (nptr[i] == '-')
+		{
+			if (!nptr[i + 1])
+				return (2147483648);
+			sign *= -1;
+		}
 		i++;
 	}
-	else if (nptr[i] == '+')
-		i++;
 	while (ft_isdigit(nptr[i]) && nptr[i])
 	{
 		result = result * 10 + (nptr[i] - '0');

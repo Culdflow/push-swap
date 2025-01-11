@@ -6,11 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:15:53 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/07 05:30:59 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/11 00:20:22 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/push_swap.h"
 
 t_pile	*new_pile(int value)
 {
@@ -48,7 +48,7 @@ void	print_pile(t_pile *start)
 		print_pile(start->next);
 }
 
-void	check_pile(int nb, t_pile *start)
+int	check_pile(int nb, t_pile *start)
 {
 	t_pile	*st;
 
