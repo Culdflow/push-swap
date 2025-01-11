@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:15:53 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/11 00:20:22 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/11 04:29:57 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,21 @@ t_pile	*pile_get_last(t_pile *start)
 	return (pile_get_last(start->next));
 }
 
-void	pile_add_back(t_pile *start, t_pile *pile)
+void	pile_add_back(t_pile **start, t_pile *pile)
 {
 	t_pile	*last;
 
-	last = pile_get_last(start);
+	last = pile_get_last(*start);
 	last->next = pile;
+}
+
+void	pile_add_front(t_pile **start, t_pile *pile)
+{
+	t_pile	*tmp;
+
+	tmp = *start;
+	*start = pile;
+	(*start)->next = tmp;
 }
 
 void	print_pile(t_pile *start)
