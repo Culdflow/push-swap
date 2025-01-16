@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:15:53 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/11 04:29:57 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/16 23:45:33 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,33 +35,50 @@ void	pile_add_back(t_pile **start, t_pile *pile)
 {
 	t_pile	*last;
 
+	if (!start)
+		return ;
+	if (!*start)
+	{
+		*start = pile;
+		return ;
+	}
 	last = pile_get_last(*start);
 	last->next = pile;
 }
 
-void	pile_add_front(t_pile **start, t_pile *pile)
+void	pile_add_front(t_pile **start, t_pile **pile)
 {
 	t_pile	*tmp;
 
+	if (!start)
+		return ;
+	if (!*start)
+	{
+		*start = *pile;
+		*pile = (*pile)->next;
+		(*start)->next = NULL;
+		return ;
+	}
 	tmp = *start;
-	*start = pile;
+	*start = *pile;
+	*pile = (*pile)->next;
 	(*start)->next = tmp;
 }
 
-void	print_pile(t_pile *start)
+void	print_pile(t_pile *start, char *str)
 {
+	ft_printf("\033[0;32m[%s]\033[0m\n", str);
 	if (!start)
 		return ;
-	ft_printf("%d\n", start->value);
-	if (start->next)
-		print_pile(start->next);
+	while (start)
+	{
+		ft_printf("%d\n", start->value);
+		start = start->next;
+	}
 }
 
 int	check_pile(int nb, t_pile *start)
 {
-	t_pile	*st;
-
-	st = start;
 	while (start)
 	{
 		if (start->value == nb)
@@ -71,10 +88,42 @@ int	check_pile(int nb, t_pile *start)
 	return (1);
 }
 
+int	pile_get_size(t_pile *start)
+{
+	int	result;
+
+	result = 0;
+	while(start)
+	{
+		result++;
+		start = start->next;
+	}
+	return (result);
+}
+
+t_pile	*pile_get_nb(int nb, t_pile *start)
+{
+	int	pile_nb;
+
+	pile_nb = 0;
+	if (nb < 0)
+		return (NULL);
+	while (start)
+	{
+		if (pile_nb == nb)
+			return (start);
+		start = start->next;
+		pile_nb++;
+	}
+	return (NULL);
+}
+
 void	free_pile(t_pile *start)
 {
 	t_pile	*tmp;
 
+	if (!start)
+		return ;
 	while (start->next)
 	{
 		tmp = start->next;
@@ -82,4 +131,27 @@ void	free_pile(t_pile *start)
 		start = tmp;
 	}
 	free(start);
+}
+
+int	pile_get_biggest(t_pile *start, int nb)
+{
+	int	biggest_value;
+	int	index;
+	int	biggest_index;
+	
+	biggest_index = 0;
+	index = 0;
+	while (start && index < nb)
+	{
+		if (index == 0)
+			biggest_value = start->value;
+		else if (start->value > biggest_value)
+		{
+			biggest_index = index;
+			biggest_value = start->value;
+		}
+		index++;
+		start = start->next;
+	}
+	return (biggest_index);
 }

@@ -1,47 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pile_swap.c                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 04:01:04 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/16 21:44:53 by dfeve            ###   ########.fr       */
+/*   Created: 2025/01/16 23:10:11 by dfeve             #+#    #+#             */
+/*   Updated: 2025/01/16 23:49:41 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	pile_swap(t_pile **pile)
+void	pile_sort_3(t_pile **pile)
 {
-	t_pile	*tmp;
+	int	biggest_nb_index;
 
-	if (pile_get_size(*pile) < 2)
-		return ;
-	tmp = *pile;
-	*pile = (*pile)->next;
-	if ((*pile)->next)
-		tmp->next = (*pile)->next;
-	else
-		tmp->next = NULL;
-	(*pile)->next = tmp;
+	biggest_nb_index = pile_get_biggest(*pile, 3);
+	if (biggest_nb_index == 0)
+		ra(pile);
+	else if (biggest_nb_index == 1)
+		rra(pile);
+	if ((*pile)->value > (*pile)->next->value)
+		sa(pile);
 }
 
-void	sa(t_pile **pile)
+void	pile_sort_5(t_pile **pile)
 {
-	pile_swap(pile);
-	ft_printf("sa\n");
-}
-
-void	sb(t_pile **pile)
-{
-	pile_swap(pile);
-	ft_printf("sb\n");
-}
-
-void	ss(t_pile **a, t_pile **b)
-{
-	pile_swap(a);
-	pile_swap(b);
-	ft_printf("ss\n");
+	while ((*pile)->value > (*pile)->next->value)
+	{
+		pile_sort_3(pile);
+		pile_sort_3(&(*pile)->next);
+		pile_sort_3(&(*pile)->next->next);
+	}
 }

@@ -1,47 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pile_swap.c                                        :+:      :+:    :+:   */
+/*   pile_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 04:01:04 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/16 21:44:53 by dfeve            ###   ########.fr       */
+/*   Created: 2025/01/16 19:55:09 by dfeve             #+#    #+#             */
+/*   Updated: 2025/01/16 21:25:33 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	pile_swap(t_pile **pile)
+static void	pile_rotate(t_pile **pile)
 {
-	t_pile	*tmp;
+	t_pile	*last;
 
 	if (pile_get_size(*pile) < 2)
-		return ;
-	tmp = *pile;
+		return ;	
+	last = *pile;
+	pile_add_back(pile, *pile);
 	*pile = (*pile)->next;
-	if ((*pile)->next)
-		tmp->next = (*pile)->next;
-	else
-		tmp->next = NULL;
-	(*pile)->next = tmp;
+	last->next = NULL;
 }
 
-void	sa(t_pile **pile)
+void	ra(t_pile **a)
 {
-	pile_swap(pile);
-	ft_printf("sa\n");
+	pile_rotate(a);
+	ft_printf("ra\n");
 }
 
-void	sb(t_pile **pile)
+void	rb(t_pile **b)
 {
-	pile_swap(pile);
-	ft_printf("sb\n");
+	pile_rotate(b);
+	ft_printf("rb\n");
 }
 
-void	ss(t_pile **a, t_pile **b)
+void	rr(t_pile **a, t_pile **b)
 {
-	pile_swap(a);
-	pile_swap(b);
-	ft_printf("ss\n");
+	pile_rotate(a);
+	pile_rotate(b);
+	ft_printf("rr\n");
 }
+
