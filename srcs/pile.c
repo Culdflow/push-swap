@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:15:53 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/16 23:45:33 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/18 20:17:17 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,4 +154,27 @@ int	pile_get_biggest(t_pile *start, int nb)
 		start = start->next;
 	}
 	return (biggest_index);
+}
+
+int	pile_get_smallest(t_pile *start, int nb)
+{
+	int	smallest_value;
+	int	index;
+	int	smallest_index;
+	
+	smallest_index = 0;
+	index = 0;
+	while (start && index < nb)
+	{
+		if (index == 0)
+			smallest_value = start->value;
+		else if (start->value < smallest_value)
+		{
+			smallest_index = index;
+			smallest_value = start->value;
+		}
+		index++;
+		start = start->next;
+	}
+	return (smallest_index);
 }

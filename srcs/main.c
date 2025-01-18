@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:28:08 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/16 23:47:18 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/18 20:28:07 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int main(int argc, char **argv)
 		a = parse_str(argv[1]);
 	else
 		a = parse_opt(argv);
-	pile_sort_5(&a);
-	print_pile(a, "PILE A");
+	pile_sort_5(&a, &b);
+	//print_pile(a, "PILE A");
 	free_pile(a);
 	free_pile(b);
 }

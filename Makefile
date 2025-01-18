@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -Ilib/libft #-fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra -Ilib/libft -fsanitize=address -g
 NAME = pushswap
 
 SRC = srcs/main.c \

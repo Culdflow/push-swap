@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:34:06 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/16 23:47:02 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/18 20:23:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_pile
 int		check_pile(int nb, t_pile *start);
 int		pile_get_size(t_pile *start);
 int		pile_get_biggest(t_pile *start, int nb);
+int		pile_get_smallest(t_pile *start, int nb);
 void	print_pile(t_pile *start, char *str);
 void	free_pile(t_pile *start);
 void	pile_add_back(t_pile **start, t_pile *pile);
@@ -37,7 +38,9 @@ t_pile	*pile_get_nb(int nb, t_pile *start);
 //---------------------SORT--------------------------
 
 void	pile_sort_3(t_pile **pile);
-void	pile_sort_5(t_pile **pile);
+void	pile_sort_5(t_pile **pile_a, t_pile **pile_b);
+void	pile_put_on_top(t_pile	**pile, int pos);
+int		pile_is_sorted(t_pile *pile);
 
 //-----------------------PARSE------------------------
 
