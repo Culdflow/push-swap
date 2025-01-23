@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:15:53 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 22:30:16 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/24 00:22:33 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,27 +136,19 @@ void	free_pile(t_pile *start)
 	free(start);
 }
 
-int	pile_get_biggest(t_pile *start, int nb)
+t_pile	*pile_get_biggest(t_pile *start, int nb)
 {
-	int	biggest_value;
+	t_pile	*result;
 	int	index;
-	int	biggest_index;
 	
-	biggest_index = 0;
-	index = 0;
 	while (start && index < nb)
 	{
-		if (index == 0)
-			biggest_value = start->value;
-		else if (start->value > biggest_value)
-		{
-			biggest_index = index;
-			biggest_value = start->value;
-		}
+		if (start->value > result->value)
+			result = start;
 		index++;
 		start = start->next;
 	}
-	return (biggest_index);
+	return (result);
 }
 
 int	pile_get_smallest(t_pile *start, int nb)
@@ -214,6 +206,8 @@ t_pile	*get_target_node(t_pile *pile, int nb)
 		}
 		pile = pile->next;
 	}
+	if (!result)
+		result = pile_get_biggest(pile, pile_get_size(pile));
 	return (result);
 }
 
