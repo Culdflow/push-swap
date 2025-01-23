@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 23:10:11 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 23:05:49 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/23 23:43:15 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	pile_is_sorted(t_pile *pile, char type)
 	return (1);
 }
 
-void	pile_put_on_top(t_pile	**pile, int pos)
+void	pile_put_on_top(t_pile **pile, int pos)
 {
 	int	i;
 
@@ -66,6 +66,33 @@ void	pile_put_on_top(t_pile	**pile, int pos)
 				ra(pile);
 		}
 	}
+}
+
+int	pile_put_on_top_calculate(t_pile **pile, int pos)
+{
+	int	i;
+	int	result;
+
+	i = 0;
+	result = 0;
+	if (pos == 0)
+		return (0);
+	if (pos == 1)
+		return (1);
+	else
+	{
+		if ((pile_get_size(*pile) / 2) <= pos)
+		{
+			while (i++ < (pile_get_size(*pile) - pos))
+				result++;
+		}
+		else
+		{
+			while (i++ < (pile_get_size(*pile) - pos))
+				result++;
+		}
+	}
+	return (result);
 }
 
 void	pile_sort_3(t_pile **pile)
@@ -110,4 +137,17 @@ void	pile_push_to_target_node(t_pile *node, t_pile **node_pile, t_pile **target_
 		pb(node_pile, target_node_pile);
 	else
 		pa(node_pile, target_node_pile);
+}
+
+int	pile_push_to_target_node_calculate(t_pile *node, t_pile **node_pile, t_pile **target_node_pile)
+{
+	int	result;
+
+	result = 0;
+	node->target_node = get_target_node(*target_node_pile, node->value);
+	if (node->target_node)
+		result += pile_put_on_top_calculate(target_node_pile, node->target_node->index);
+	result += pile_put_on_top_calculate(node_pile, node->index);
+	result++;
+	return (result);
 }

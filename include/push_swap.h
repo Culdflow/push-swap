@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:34:06 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 22:40:59 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/23 23:44:33 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	pile_sort_5(t_pile **pile_a, t_pile **pile_b);
 void	pile_put_on_top(t_pile	**pile, int pos);
 int		pile_is_sorted(t_pile *pile, char type);
 void	pile_push_to_target_node(t_pile *node, t_pile **node_pile, t_pile **target_node_pile);
+int		pile_push_to_target_node_calculate(t_pile *node, t_pile **node_pile, t_pile **target_node_pile);
+int		pile_put_on_top_calculate(t_pile **pile, int pos);
 
 //-----------------------PARSE------------------------
 

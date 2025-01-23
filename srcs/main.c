@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:28:08 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 23:04:02 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/23 23:46:44 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,11 @@ int main(int argc, char **argv)
 	else
 		a = parse_opt(argv);
 	pile_set_index(a);
+	pb(&a, &b);
+	pb(&a, &b);
 	print_pile(a, "PILE A");
 	print_pile(b, "PILE B");
-	// ft_printf("smallest nb index = %d\n", pile_get_smallest(a, pile_get_size(a)));
-	pile_sort_5(&a, &b);
-	print_pile(a, "PILE A");
-	print_pile(b, "PILE B");
+	ft_printf("move cost = %d\n", pile_push_to_target_node_calculate(a->next, &a, &b));
 	free_pile(a);
 	free_pile(b);
 }
