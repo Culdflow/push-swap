@@ -12,17 +12,31 @@
 
 #include "../include/push_swap.h"
 
-int	pile_is_sorted(t_pile *pile)
+int	pile_is_sorted(t_pile *pile, char *type)
 {
 	int	value;
 
-	value = pile->value;
-	while (pile)
+	if (type == "BIG")
 	{
-		if (pile->value < value)
-			return (-1);
 		value = pile->value;
-		pile = pile->next;
+		while (pile)
+		{
+			if (pile->value < value)
+				return (-1);
+			value = pile->value;
+			pile = pile->next;
+		}
+	}
+	else
+	{
+		value = pile->value;
+		while (pile)
+		{
+			if (pile->value > value)
+				return (-1);
+			value = pile->value;
+			pile = pile->next;
+		}
 	}
 	return (1);
 }

@@ -178,3 +178,20 @@ int	pile_get_smallest(t_pile *start, int nb)
 	}
 	return (smallest_index);
 }
+
+int	pile_get_med(t_pile *pile)
+{
+	int	value;
+	int	nb;
+
+	value = 0;
+	nb = 0;
+	while (pile)
+	{
+		value += pile->value;
+		nb++;
+		if (pile->next)
+			pile = pile->next;
+	}
+	return (value / nb);
+}

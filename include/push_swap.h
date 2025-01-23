@@ -34,6 +34,7 @@ void	pile_add_front(t_pile **start, t_pile **pile);
 t_pile	*pile_get_last(t_pile *start);
 t_pile	*new_pile(int value);
 t_pile	*pile_get_nb(int nb, t_pile *start);
+int		pile_get_med(t_pile *pile);
 
 //---------------------SORT--------------------------
 
