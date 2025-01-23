@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 23:10:11 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/18 20:27:50 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/23 20:35:47 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	pile_is_sorted(t_pile *pile, char *type)
+int	pile_is_sorted(t_pile *pile, char type)
 {
 	int	value;
 
-	if (type == "BIG")
+	if (type == 'B')
 	{
 		value = pile->value;
 		while (pile)
 		{
-			if (pile->value < value)
+			if (pile->value > value)
 				return (-1);
 			value = pile->value;
 			pile = pile->next;
@@ -32,7 +32,7 @@ int	pile_is_sorted(t_pile *pile, char *type)
 		value = pile->value;
 		while (pile)
 		{
-			if (pile->value > value)
+			if (pile->value < value)
 				return (-1);
 			value = pile->value;
 			pile = pile->next;
@@ -84,7 +84,7 @@ void	pile_sort_5(t_pile **pile_a, t_pile **pile_b)
 	int	i;
 
 	i = 0;
-	if (pile_is_sorted(*pile_a) == 1)
+	if (pile_is_sorted(*pile_a, 'S') == 1)
 		return ;
 	while (i++ < 2)
 	{

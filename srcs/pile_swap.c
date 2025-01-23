@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pile_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 04:01:04 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/16 21:44:53 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/23 20:37:20 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	pile_swap(t_pile **pile)
 	else
 		tmp->next = NULL;
 	(*pile)->next = tmp;
+	pile_set_index(*pile);
 }
 
 void	sa(t_pile **pile)

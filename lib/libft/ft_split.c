@@ -55,9 +55,6 @@ static void	set_var(unsigned int *a, int *b, int *c, int val)
 
 static int	set_on_space(int cond, int *on_space, char **result, int j)
 {
-	int	i;
-
-	i = 0;
 	if (cond == 1 && *on_space == 1)
 	{
 		j = j - 1;

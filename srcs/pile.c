@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pile.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:15:53 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/18 20:17:17 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/23 20:52:12 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ t_pile	*new_pile(int value)
 
 	result = malloc(sizeof(t_pile));
 	result->next = NULL;
+	result->target_node = NULL;
 	result->value = value;
+	result->index = 0;
 	return (result);
 }
 
@@ -72,7 +74,7 @@ void	print_pile(t_pile *start, char *str)
 		return ;
 	while (start)
 	{
-		ft_printf("%d\n", start->value);
+		ft_printf("%d	%d\n", start->value, start->index);
 		start = start->next;
 	}
 }
@@ -101,7 +103,7 @@ int	pile_get_size(t_pile *start)
 	return (result);
 }
 
-t_pile	*pile_get_nb(int nb, t_pile *start)
+t_pile	*pile_get_pos(int nb, t_pile *start)
 {
 	int	pile_nb;
 
@@ -190,8 +192,39 @@ int	pile_get_med(t_pile *pile)
 	{
 		value += pile->value;
 		nb++;
-		if (pile->next)
-			pile = pile->next;
+		pile = pile->next;
 	}
 	return (value / nb);
+}
+
+t_pile	*get_target_node(t_pile *pile, int nb)
+{
+	t_pile	*result;
+	int		diff;
+
+	result = NULL;
+	diff = 100000;
+	while(pile)
+	{
+		if(nb > pile->value && (nb - pile->value) < diff)
+		{
+			result = pile;
+			diff = nb - pile->value;
+		}
+		pile = pile->next;
+	}
+	return (result);
+}
+
+void	pile_set_index(t_pile *pile)
+{
+	int	index;
+
+	index = 0;           
+	while (pile)
+	{
+		pile->index = index;
+		index++;
+		pile = pile->next;
+	}
 }

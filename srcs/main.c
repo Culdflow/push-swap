@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:28:08 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/18 20:28:07 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/23 20:36:40 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ int main(int argc, char **argv)
 		a = parse_str(argv[1]);
 	else
 		a = parse_opt(argv);
+	pile_set_index(a);
 	pile_sort_5(&a, &b);
-	//print_pile(a, "PILE A");
+	print_pile(a, "PILE A");
+	ft_printf("med is %d\n", pile_get_med(a));
 	free_pile(a);
 	free_pile(b);
 }
