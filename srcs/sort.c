@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 23:10:11 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 20:35:47 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/23 23:05:49 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,24 @@ void	pile_put_on_top(t_pile	**pile, int pos)
 	int	i;
 
 	i = 0;
-	if (pos == 1)
+	if (pos == 0)
 		return ;
-	if (pos == 2)
+	if (pos == 1)
 	{
 		sa(pile);
 		return ;
 	}
 	else
 	{
-		while (i++ < (pile_get_size(*pile) - (pos - 1)))
-			rra(pile);
-		i = 0;
-		while (i++ < (pile_get_size(*pile) - pos))
+		if ((pile_get_size(*pile) / 2) <= pos)
 		{
-			sa(pile);
-			ra(pile);
+			while (i++ < (pile_get_size(*pile) - pos))
+				rra(pile);
+		}
+		else
+		{
+			while (i++ < (pile_get_size(*pile) - pos))
+				ra(pile);
 		}
 	}
 }
@@ -88,10 +90,24 @@ void	pile_sort_5(t_pile **pile_a, t_pile **pile_b)
 		return ;
 	while (i++ < 2)
 	{
-		pile_put_on_top(pile_a, (pile_get_smallest(*pile_a, pile_get_size(*pile_a)) + 1));
+		pile_put_on_top(pile_a, (pile_get_smallest(*pile_a, pile_get_size(*pile_a))));
 		pb(pile_a, pile_b);
 	}
+	print_pile(*pile_a, "PILE A");
+	print_pile(*pile_b, "PILE B");
 	pile_sort_3(pile_a);
 	pa(pile_a, pile_b);
 	pa(pile_a, pile_b);
+}
+
+void	pile_push_to_target_node(t_pile *node, t_pile **node_pile, t_pile **target_node_pile)
+{
+	node->target_node = get_target_node(*target_node_pile, node->value);
+	if (node->target_node)
+		pile_put_on_top(target_node_pile, node->target_node->index);
+	pile_put_on_top(node_pile, node->index);
+	if (node->pile_label == 'A')
+		pb(node_pile, target_node_pile);
+	else
+		pa(node_pile, target_node_pile);
 }

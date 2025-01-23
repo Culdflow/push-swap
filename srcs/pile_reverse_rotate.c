@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 20:02:22 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 20:37:09 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/23 22:39:36 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,24 @@ static void	pile_reverse_rotate(t_pile **pile)
 
 void	rra(t_pile	**a)
 {
-	pile_reverse_rotate(a);
-	ft_printf("rra\n");
+	if ((*a)->pile_label == 'B')
+		rrb(a);
+	else
+	{
+		pile_reverse_rotate(a);
+		ft_printf("rra\n");
+	}
 }
 
 void	rrb(t_pile	**b)
 {
-	pile_reverse_rotate(b);
-	ft_printf("rrb\n");
+	if ((*b)->pile_label == 'A')
+		rra(b);
+	else
+	{
+		pile_reverse_rotate(b);
+		ft_printf("rrb\n");
+	}
 }
 
 void	rrr(t_pile	**a, t_pile **b)

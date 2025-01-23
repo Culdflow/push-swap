@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:34:06 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 20:51:53 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/23 22:40:59 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct	s_pile
 	struct s_pile	*target_node;
 	int 			value;
 	int				index;
+	char			pile_label;
 }	t_pile;
 
 //-----------------------PILE------------------------
@@ -38,6 +39,7 @@ void	pile_set_index(t_pile *pile);
 t_pile	*pile_get_last(t_pile *start);
 t_pile	*new_pile(int value);
 t_pile	*pile_get_pos(int nb, t_pile *start);
+t_pile	*get_target_node(t_pile *pile, int nb);
 
 //---------------------SORT--------------------------
 
@@ -45,6 +47,7 @@ void	pile_sort_3(t_pile **pile);
 void	pile_sort_5(t_pile **pile_a, t_pile **pile_b);
 void	pile_put_on_top(t_pile	**pile, int pos);
 int		pile_is_sorted(t_pile *pile, char type);
+void	pile_push_to_target_node(t_pile *node, t_pile **node_pile, t_pile **target_node_pile);
 
 //-----------------------PARSE------------------------
 
@@ -58,7 +61,7 @@ void	error(char *str, t_pile *pile);
 //-------------------PILE_COMMANDS--------------------
 
 void	pa(t_pile **a, t_pile **b);
-void	pb(t_pile **b, t_pile **a);
+void	pb(t_pile **a, t_pile **b);
 void	sa(t_pile **pile);
 void	sb(t_pile **pile);
 void	ss(t_pile **a, t_pile **b);

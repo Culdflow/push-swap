@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 04:01:04 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 20:37:20 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/23 22:38:20 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,24 @@ static void	pile_swap(t_pile **pile)
 
 void	sa(t_pile **pile)
 {
-	pile_swap(pile);
-	ft_printf("sa\n");
+	if ((*pile)->pile_label == 'B')
+		sb(pile);
+	else
+	{
+		pile_swap(pile);
+		ft_printf("sa\n");
+	}
 }
 
 void	sb(t_pile **pile)
 {
-	pile_swap(pile);
-	ft_printf("sb\n");
+	if ((*pile)->pile_label == 'A')
+		sa(pile);
+	else
+	{
+		pile_swap(pile);
+		ft_printf("sb\n");
+	}
 }
 
 void	ss(t_pile **a, t_pile **b)

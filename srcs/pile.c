@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:15:53 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 20:52:12 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/23 22:30:16 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_pile	*new_pile(int value)
 	result->next = NULL;
 	result->target_node = NULL;
 	result->value = value;
+	result->pile_label = 'A';
 	result->index = 0;
 	return (result);
 }
@@ -74,7 +75,7 @@ void	print_pile(t_pile *start, char *str)
 		return ;
 	while (start)
 	{
-		ft_printf("%d	%d\n", start->value, start->index);
+		ft_printf("%d	%d	\033[0;32m[%c]\033[0m\n\n", start->value, start->index, start->pile_label);
 		start = start->next;
 	}
 }
