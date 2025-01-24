@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 23:10:11 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/24 17:28:23 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/24 22:51:28 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	pile_put_on_top(t_pile **pile, int pos)
 	}
 }
 
-int	pile_put_on_top_calculate(t_pile **pile, int pos)
+int	pile_put_on_top_calculate(t_pile *pile, int pos)
 {
 	int	i;
 	int	result;
@@ -81,14 +81,14 @@ int	pile_put_on_top_calculate(t_pile **pile, int pos)
 		return (1);
 	else
 	{
-		if ((pile_get_size(*pile) / 2) <= pos)
+		if ((pile_get_size(pile) / 2) <= pos)
 		{
-			while (i++ < (pile_get_size(*pile) - pos))
+			while (i++ < (pile_get_size(pile) - pos))
 				result++;
 		}
 		else
 		{
-			while (i++ < (pile_get_size(*pile) - pos))
+			while (i++ < (pile_get_size(pile) - pos))
 				result++;
 		}
 	}
@@ -139,15 +139,41 @@ void	pile_push_to_target_node(t_pile *node, t_pile **node_pile, t_pile **target_
 		pa(node_pile, target_node_pile);
 }
 
-int	pile_push_to_target_node_calculate(t_pile *node, t_pile **node_pile, t_pile **target_node_pile)
+int	pile_push_to_target_node_calculate(t_pile *node, t_pile *node_pile, t_pile *target_node_pile)
 {
 	int	result;
 
 	result = 0;
-	node->target_node = get_target_node(*target_node_pile, node->value);
-	if (node->target_node)
+	node->target_node = get_target_node(target_node_pile, node->value);
+	if (node->target_node && target_node_pile)
 		result += pile_put_on_top_calculate(target_node_pile, node->target_node->index);
 	result += pile_put_on_top_calculate(node_pile, node->index);
 	result++;
 	return (result);
+}
+
+t_pile	*get_best_move(t_pile *node_pile, t_pile *target_node_pile)
+{
+	t_pile	*best_move;
+	t_pile	*pile;
+	int		best_move_cost;
+	int		cost;
+
+	pile = node_pile;
+	best_move = pile;
+	best_move_cost = 100000;
+	while (pile)
+	{
+		cost = pile_push_to_target_node_calculate(pile, node_pile, target_node_pile);
+		if (cost == 1)
+			return (pile);
+		if (cost < best_move_cost)
+		{
+			best_move = pile;
+			best_move_cost = cost;
+		}
+		pile = pile->next;
+	}
+	ft_printf("best move cost = %d\n", best_move_cost);
+	return (best_move);
 }

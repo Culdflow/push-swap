@@ -27,10 +27,10 @@ endef
 
 # Rule for compiling object files
 .c.o:
-		@${CC} ${CFLAGS} -c $< -o $@ > /dev/null 2>&1
+		@${CC} ${CFLAGS} -c $< -o $@ #> /dev/null 2>&1
 
 # Main targets
-all: ${OBJS} lib/libft/lib_ft.a ${NAME}
+all: lib/libft/lib_ft.a ${OBJS} ${NAME}
 		$(call loading_bar, "Compiling object files")
 
 lib/libft/lib_ft.a:
