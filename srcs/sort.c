@@ -6,7 +6,7 @@
 /*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 23:10:11 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 23:43:15 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/24 17:28:23 by robot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	pile_sort_3(t_pile **pile)
 {
 	int	biggest_nb_index;
 
-	biggest_nb_index = pile_get_biggest(*pile, 3);
+	biggest_nb_index = pile_get_biggest(*pile, 3)->index;
 	if (biggest_nb_index == 0)
 		ra(pile);
 	else if (biggest_nb_index == 1)
