@@ -2,16 +2,19 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -Ilib/libft -fsanitize=address -g
 NAME = push_swap
 
-SRC = srcs/main.c \
+SRC = srcs/algorithme.c \
 	srcs/error.c \
+	srcs/main.c \
 	srcs/parse.c \
 	srcs/pile.c \
 	srcs/pile_push.c \
 	srcs/pile_reverse_rotate.c \
 	srcs/pile_rotate.c \
 	srcs/pile_swap.c \
+	srcs/pile_utils.c \
+	srcs/pile_utils_more.c \
 	srcs/sort.c \
-	srcs/algorithme.c
+	srcs/sort_utils.c \
 
 OBJS = ${SRC:.c=.o}
 
