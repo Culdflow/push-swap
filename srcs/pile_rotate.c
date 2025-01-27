@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pile_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:55:09 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/23 22:38:56 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/27 17:21:03 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	pile_rotate(t_pile **pile)
 	t_pile	*last;
 
 	if (pile_get_size(*pile) < 2)
-		return ;	
+		return ;
 	last = *pile;
 	pile_add_back(pile, *pile);
 	*pile = (*pile)->next;
@@ -53,4 +53,3 @@ void	rr(t_pile **a, t_pile **b)
 	pile_rotate(b);
 	ft_printf("rr\n");
 }
-

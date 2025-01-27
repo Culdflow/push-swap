@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:34:06 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/27 15:03:01 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/27 17:33:03 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include <libft.h>
 
-typedef struct	s_pile
+typedef struct s_pile
 {
 	struct s_pile	*next;
 	struct s_pile	*target_node;
-	int 			value;
+	int				value;
 	int				index;
 	char			pile_label;
 }	t_pile;
@@ -48,8 +48,10 @@ void	pile_sort_3(t_pile **pile);
 void	pile_sort_5(t_pile **pile_a, t_pile **pile_b);
 void	pile_put_on_top(t_pile	**pile, int pos);
 int		pile_is_sorted(t_pile *pile, char type);
-void	pile_push_to_target_node(t_pile *node, t_pile **node_pile, t_pile **target_node_pile);
-int		pile_push_to_target_node_calculate(t_pile *node, t_pile *node_pile, t_pile *target_node_pile);
+void	pile_push_to_target_node(t_pile *node, t_pile **node_pile,
+			t_pile **target_node_pile);
+int		pile_push_to_target_node_calculate(t_pile *node, t_pile *node_pile,
+			t_pile *target_node_pile);
 int		pile_put_on_top_calculate(t_pile *pile, int pos);
 t_pile	*get_best_move(t_pile *node_pile, t_pile *target_node_pile);
 

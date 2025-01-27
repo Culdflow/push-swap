@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:25:15 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/11 02:48:31 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/27 17:14:49 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	error(char *str, t_pile *pile)
 {
 	free_pile(pile);
 	ft_printf("\e[1;31m[ERROR]\e[0m : ");
-	ft_printf("%s\n",str);
+	ft_printf("%s\n", str);
 	exit(1);
 }

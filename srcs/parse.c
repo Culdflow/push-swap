@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:23:02 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/16 22:16:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/27 17:16:12 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_num(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if(!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
+		if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
 			return (-1);
 		i++;
 	}
@@ -74,7 +74,8 @@ t_pile	*parse_opt(char **opt)
 	result = NULL;
 	while (opt[i])
 	{
-		if (((opt[i][0] == '-' || opt[i][0] == '+')&& !opt[i][1]) || check_num(opt[i]) == -1)
+		if (((opt[i][0] == '-' || opt[i][0] == '+')
+			&& !opt[i][1]) || check_num(opt[i]) == -1)
 			error("Need a number as argument", result);
 		if (check_pile(ft_atoi(opt[i]), result) == -1)
 			error("numbers have to be different from one another", result);
