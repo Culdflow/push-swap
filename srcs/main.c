@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:28:08 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/24 22:13:50 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/27 16:31:33 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int main(int argc, char **argv)
 {
 	t_pile	*a;
 	t_pile	*b;
-	t_pile	*best_move;
 
 	a = NULL;
 	b = NULL;
@@ -66,12 +65,7 @@ int main(int argc, char **argv)
 	else
 		a = parse_opt(argv);
 	pile_set_index(a);
-	pb(&a, &b);
-	pb(&a, &b);
-	print_pile(a, "PILE A");
-	print_pile(b, "PILE B");
-	best_move = get_best_move(a, b);
-	ft_printf("best move index = %d\n", best_move->index);
+	algorithme(&a, &b);
 	free_pile(a);
 	free_pile(b);
 }

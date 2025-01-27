@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:34:06 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/24 22:04:15 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/27 15:03:01 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,19 @@ typedef struct	s_pile
 
 int		check_pile(int nb, t_pile *start);
 int		pile_get_size(t_pile *start);
-int		pile_get_smallest(t_pile *start, int nb);
 int		pile_get_med(t_pile *pile);
 void	print_pile(t_pile *start, char *str);
 void	free_pile(t_pile *start);
 void	pile_add_back(t_pile **start, t_pile *pile);
 void	pile_add_front(t_pile **start, t_pile **pile);
 void	pile_set_index(t_pile *pile);
+t_pile	*pile_get_smallest(t_pile *start, int nb);
 t_pile	*pile_get_biggest(t_pile *start, int nb);
 t_pile	*pile_get_last(t_pile *start);
 t_pile	*new_pile(int value);
 t_pile	*pile_get_pos(int nb, t_pile *start);
 t_pile	*get_target_node(t_pile *pile, int nb);
+t_pile	*get_target_node_b(t_pile *pile, int nb);
 
 //---------------------SORT--------------------------
 
@@ -51,6 +52,10 @@ void	pile_push_to_target_node(t_pile *node, t_pile **node_pile, t_pile **target_
 int		pile_push_to_target_node_calculate(t_pile *node, t_pile *node_pile, t_pile *target_node_pile);
 int		pile_put_on_top_calculate(t_pile *pile, int pos);
 t_pile	*get_best_move(t_pile *node_pile, t_pile *target_node_pile);
+
+//---------------------ALGORITHME---------------------
+
+void	algorithme(t_pile **pile_a, t_pile **pile_b);
 
 //-----------------------PARSE------------------------
 

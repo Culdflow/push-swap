@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pile.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: robot <robot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:15:53 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/24 22:49:31 by robot            ###   ########.fr       */
+/*   Updated: 2025/01/27 15:25:11 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,27 +153,21 @@ t_pile	*pile_get_biggest(t_pile *start, int nb)
 	return (result);
 }
 
-int	pile_get_smallest(t_pile *start, int nb)
+t_pile	*pile_get_smallest(t_pile *start, int nb)
 {
-	int	smallest_value;
+	t_pile	*smallest_pile;
 	int	index;
-	int	smallest_index;
 	
-	smallest_index = 0;
 	index = 0;
+	smallest_pile = start;
 	while (start && index < nb)
 	{
-		if (index == 0)
-			smallest_value = start->value;
-		else if (start->value < smallest_value)
-		{
-			smallest_index = index;
-			smallest_value = start->value;
-		}
+		if (start->value < smallest_pile->value)
+			smallest_pile = start;
 		index++;
 		start = start->next;
 	}
-	return (smallest_index);
+	return (smallest_pile);
 }
 
 int	pile_get_med(t_pile *pile)
@@ -212,6 +206,29 @@ t_pile	*get_target_node(t_pile *pile, int nb)
 	}
 	if (!result)
 		result = pile_get_biggest(pile_backup, pile_get_size(pile_backup));
+	return (result);
+}
+
+t_pile	*get_target_node_b(t_pile *pile, int nb)
+{
+	t_pile	*result;
+	t_pile	*pile_backup;
+	int		diff;
+
+	result = NULL;
+	pile_backup = pile;
+	diff = 100000;
+	while(pile)
+	{
+		if(nb < pile->value && (pile->value - nb) < diff)
+		{
+			result = pile;
+			diff = pile->value - nb;
+		}
+		pile = pile->next;
+	}
+	if (!result)
+		result = pile_get_smallest(pile_backup, pile_get_size(pile_backup));
 	return (result);
 }
 

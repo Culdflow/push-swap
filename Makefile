@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -Ilib/libft -fsanitize=address -g
-NAME = pushswap
+NAME = push_swap
 
 SRC = srcs/main.c \
 	srcs/error.c \
@@ -10,26 +10,25 @@ SRC = srcs/main.c \
 	srcs/pile_reverse_rotate.c \
 	srcs/pile_rotate.c \
 	srcs/pile_swap.c \
-	srcs/sort.c
+	srcs/sort.c \
+	srcs/algorithme.c
 
 OBJS = ${SRC:.c=.o}
 
-# Function to simulate a loading bar with green color and text explanation
 define loading_bar
 	@echo -n "\e[1;32mBuilding... \e[0m$(1)\n"  # Print the description text with green color
 	@echo -n "\e[1;32m[                    ]\e[0m"  # Print the initial loading bar in green
-	@for i in `seq 1 20`; do \
-		echo -n "\b\b#"; \
+	@echo -n "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
+	@for i in `seq 1 19`; do \
+		echo -n "#"; \
 		sleep 0.02; \
 	done
-	@echo -n "\b\b\e[0;96m Done!                \e[0m\n"  # End the line with " Done!" in light cyan color
+	@echo -n "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\e[0;96m Done!                \e[0m\n"  # End the line with " Done!" in light cyan color
 endef
 
-# Rule for compiling object files
 .c.o:
 		@${CC} ${CFLAGS} -c $< -o $@ #> /dev/null 2>&1
 
-# Main targets
 all: lib/libft/lib_ft.a ${OBJS} ${NAME}
 		$(call loading_bar, "Compiling object files")
 
