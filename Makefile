@@ -32,14 +32,13 @@ endef
 .c.o:
 		@${CC} ${CFLAGS} -c $< -o $@ #> /dev/null 2>&1
 
-all: lib/libft/lib_ft.a ${OBJS} ${NAME}
-		$(call loading_bar, "Compiling object files")
+all: lib/libft/libft.a ${NAME}
 
-lib/libft/lib_ft.a:
+lib/libft/libft.a:
 		$(call loading_bar, "Building libft")
 		@make -C lib/libft > /dev/null 2>&1
 
-${NAME}: lib/libft/lib_ft.a ${OBJS}
+${NAME}: lib/libft/libft.a ${OBJS}
 		$(call loading_bar, "Building pushswap")
 		@${CC} ${CFLAGS} ${OBJS} -o ${NAME} -L./lib/libft -lft > /dev/null 2>&1
 
