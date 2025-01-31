@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:28:08 by dfeve             #+#    #+#             */
-/*   Updated: 2025/01/27 17:15:08 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/01/31 01:23:56 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (argc <= 1)
+	if (argc <= 3)
 		return (0);
 	if (argc == 2)
 		a = parse_str(argv[1]);
